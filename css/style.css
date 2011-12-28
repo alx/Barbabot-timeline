@@ -1,0 +1,289 @@
+/*
+ * HTML5 ✰ Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ *
+ * Detailed information about this CSS: h5bp.com/css
+ *
+ * ==|== normalize ==========================================================
+ */
+
+
+/* =============================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
+[hidden] { display: none; }
+
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+
+/*
+ * 1. Correct text resizing oddly in IE6/7 when body font-size is set using em units
+ * 2. Force vertical scrollbar in non-IE
+ * 3. Prevent iOS text size adjust on device orientation change, without disabling user zoom: h5bp.com/g
+ */
+
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body { margin: 0; font-size: 1em; line-height: 1.4; }
+
+body, button, input, select, textarea { font-family: sans-serif; color: #222; }
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate
+ * Also: hot pink! (or customize the background color to match your design)
+ */
+
+::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
+::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+
+a { color: #00e; }
+a:visited { color: #551a8b; }
+a:hover { color: #06e; }
+a:focus { outline: thin dotted; }
+
+/* Improve readability when focused and hovered in all browsers: h5bp.com/h */
+a:hover, a:active { outline: 0; }
+
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+
+abbr[title] { border-bottom: 1px dotted; }
+
+b, strong { font-weight: bold; }
+
+blockquote { margin: 1em 40px; }
+
+dfn { font-style: italic; }
+
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+/* Redeclare monospace font family: h5bp.com/j */
+pre, code, kbd, samp { font-family: monospace, serif; _font-family: 'courier new', monospace; font-size: 1em; }
+
+/* Improve readability of pre-formatted text in all browsers */
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+
+small { font-size: 85%; }
+
+/* Position subscript and superscript content without affecting line-height: h5bp.com/k */
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+
+/*
+ * 1. Improve image quality when scaled in IE7: h5bp.com/d
+ * 2. Remove the gap between images and borders on image containers: h5bp.com/e
+ */
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+/*
+ * Correct overflow not hidden in IE9
+ */
+
+svg:not(:root) { overflow: hidden; }
+
+
+/* =============================================================================
+   Figures
+   ========================================================================== */
+
+figure { margin: 0; }
+
+
+/* =============================================================================
+   Forms
+   ========================================================================== */
+
+form { margin: 0; }
+fieldset { border: 0; margin: 0; padding: 0; }
+
+/* Indicate that 'label' will shift focus to the associated form element */
+label { cursor: pointer; }
+
+/*
+ * 1. Correct color not inheriting in IE6/7/8/9
+ * 2. Correct alignment displayed oddly in IE6/7
+ */
+
+legend { border: 0; *margin-left: -7px; padding: 0; }
+
+/*
+ * 1. Correct font-size not inheriting in all browsers
+ * 2. Remove margins in FF3/4 S5 Chrome
+ * 3. Define consistent vertical alignment display in all browsers
+ */
+
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+
+/*
+ * 1. Define line-height as normal to match FF3/4 (set using !important in the UA stylesheet)
+ */
+
+button, input { line-height: normal; }
+
+/*
+ * 1. Display hand cursor for clickable form elements
+ * 2. Allow styling of clickable form elements in iOS
+ * 3. Correct inner spacing displayed oddly in IE7 (doesn't effect IE6)
+ */
+
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
+
+/*
+ * Consistent box sizing and appearance
+ */
+
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+
+/*
+ * Remove inner padding and border in FF3/4: h5bp.com/l
+ */
+
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+/*
+ * 1. Remove default vertical scrollbar in IE6/7/8/9
+ * 2. Allow only vertical resizing
+ */
+
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+
+/* Colors for form validity */
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+
+/* ==|== primary styles =====================================================
+   Author:
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==|== media queries ======================================================
+   PLACEHOLDER Media Queries for Responsive Design.
+   These override the primary ('mobile first') styles
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) {
+  /* Style adjustments for viewports 480px and over go here */
+
+}
+
+@media only screen and (min-width: 768px) {
+  /* Style adjustments for viewports 768px and over go here */
+
+}
+
+
+
+/* ==|== non-semantic helper classes ========================================
+   Please define your styles before this section.
+   ========================================================================== */
+
+/* For image replacement */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
+.ir br { display: none; }
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden { display: none !important; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats: h5bp.com/q */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+
+
+
+/* ==|== print styles =======================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+  * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* h5bp.com/t */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+
+#lightly-overlay{background-position:center center;background-repeat:no-repeat;position:fixed;height:100%;width:100%;z-index:99;left:0;top:0}#lightly-overlay.animate{-webkit-transition:all 0.2s ease-out;-moz-transition:all 0.2s ease-out;-ms-transition:all 0.2s ease-out;-o-transition:all 0.2s ease-out;transition:all 0.2s ease-out}#lightly-loading{display:none;position:absolute;top:0;left:0;height:40px;width:40px;z-index:100;background:transparent url(http://timekiwi-assets.s3.amazonaws.com/assets/loading-377c494c3e8af0b0531060ed34fe7a42.png) no-repeat}h1{font-size:48px;text-shadow:1px 1px 1px #ddd}a{color:#b63700}#flash{position:absolute;top:0px;left:0px;z-index:9999;width:100%}.flash{margin:0 auto;margin-top:-5px;width:450px;text-align:center;padding:10px;padding-top:15px;border:2px solid #000;border-top:0px;color:#000;text-shadow:1px 1px 0px #fff;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px}.flash#notice,.flash#success{border-color:#adb600;background:#eae773}.flash#error{border-color:#b63700;background:#f9c6b6}#pagination{clear:both;margin:50px 0 25px 0;padding:25px;background:#f5f5f5}#pagination .pagination{margin:0 auto;display:table}#pagination .pagination a,#pagination .pagination span,#pagination .pagination em{display:block;float:Left;padding:5px 10px;margin:0px 2.5px;text-shadow:1px 1px 0px #fff;text-decoration:none;font-style:normal;font-weight:bold;border-radius:7px;-moz-border-radius:7px;-webkit-border-radius:7px}#pagination .pagination .disabled{color:#ccc}#pagination .pagination a{color:#212121;border:1px solid #ddd}#pagination .pagination a:hover{background:#fff}#pagination .pagination .current{background:#212121;color:#fff;text-shadow:1px 1px 0px #000}form.simple_form label{font-size:32px;color:#4a4a4a;font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}form.simple_form .input{margin:20px 0}form.simple_form .string label,form.simple_form .text label,form.simple_form .datetime label,form.simple_form .select label{display:block;margin-bottom:10px}form.simple_form .string input,form.simple_form .string textarea,form.simple_form .text input,form.simple_form .text textarea{padding:5px;font-size:20px;line-height:26px;width:650px}form.simple_form .string input,form.simple_form .text input{height:26px}form.simple_form .string textarea,form.simple_form .text textarea{height:78px}table.index{width:100%;text-align:left;border-spacing:0;border-collapse:collapse}table.index td,table.index th{padding:2.5px 5px}table.index tr:nth-child(even) td{background:#f5f5f5}table.index tr:hover td{background:#eae773;text-shadow:1px 1px 0px #fff;cursor:pointer}table.index td{height:50px;font-size:12px}table.index td img{height:50px;display:block}#pages-index #getting_started{padding:75px 0;width:960px;margin:0px auto;position:relative}#pages-index #getting_started .graphic{position:absolute;top:0px;right:0px;overflow:hidden}#pages-index #getting_started .graphic img{display:block}#pages-index #getting_started .pitch{width:450px}#pages-index #getting_started .pitch h2{font-size:48px;text-shadow:1px 1px 1px #ddd}#pages-index #getting_started .pitch h2 .tier_1{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}#pages-index #getting_started .pitch h2 span{display:block}#pages-index #getting_started .pitch h3{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal;margin-top:15px;color:#4a4a4a}#pages-index #getting_started .learn_more{color:#f5f5f5;margin-top:20px;font-size:12px}#pages-index #getting_started .learn_more a{border-bottom:1px dotted #f5f5f5;text-decoration:none;color:#f5f5f5}#pages-index #getting_started #start_button{display:block;margin-top:40px;width:180px;background:#b63700 url(http://timekiwi-assets.s3.amazonaws.com/assets/arrow-3864cb1263d7d4870261024dedbfd44d.png) no-repeat 190px 20px;color:#fff;text-decoration:none;font-size:32px;line-height:32px;padding:16px 0;padding-left:30px;padding-right:30px;-webkit-transition:all 0.15s ease-out;-moz-transition:all 0.15s ease-out;-ms-transition:all 0.15s ease-out;-o-transition:all 0.15s ease-out;transition:all 0.15s ease-out}#pages-index #getting_started #start_button:hover{background-color:#adb600}#pages-index #information{background:#f5f5f5;margin-top:75px}#pages-index #information .inner{display:inline-block;display:block;width:960px;margin:0 auto;padding:40px 0;text-shadow:1px 1px 0px #fff;color:#212121}#pages-index #information .inner:after{clear:both;content:" ";display:block;font-size:0;line-height:0;visibility:hidden;width:0;height:0}* html #pages-index #information .inner{height:1%}#pages-index #information .inner h3{margin-bottom:1em;font-size:20px}#pages-index #information #updates{width:450px;float:left}#pages-index #information #updates h3{float:left}#pages-index #information #updates p{float:right;line-height:20px;padding:5px 0;color:#aaa;font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}#pages-index #information #updates p a{text-decoration:none;color:#aaa}#pages-index #information #updates p a:hover{color:#212121;border-bottom:1px dotted #212121}#pages-index #information #updates dl{clear:both}#pages-index #information #updates dl dt{margin-bottom:2.5px}#pages-index #information #updates dl dt a{text-decoration:none;color:#212121}#pages-index #information #updates dl dt:hover a{color:#b63700;border-bottom:1px dotted #b63700}#pages-index #information #updates dl dd{font-size:12px;color:#999;margin-bottom:1em}#pages-index #information #newest{width:400px;margin-left:35px;float:right}#pages-index #information #newest li{float:left;list-style:none}#pages-index #information #newest li.lorem a{background:#d5ea49}#pages-index #information #newest li.ipsum a{background:#ed946c}#pages-index #information #newest li.dolor a{background:#65c6ea}#pages-index #information #newest li.sit a{background:#ffb57e}#pages-index #information #newest li.amet a{background:#ffea4d}#pages-index #information #newest li.consectetur a{background:#a996e7}#pages-index #information #newest li.adipisicing a{background:#eda9d2}#pages-index #information #newest li.elit a{background:#a996e7}#pages-index #information #newest li.sed a{background:#94f8ad}#pages-index #information #newest li a{display:block;background:#fff;color:#000;text-decoration:none;text-shadow:1px 1px 0px #eee;padding:5px 10px;margin:0 5px 5px 0;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;-webkit-transition:all 0.15s ease-out;-moz-transition:all 0.15s ease-out;-ms-transition:all 0.15s ease-out;-o-transition:all 0.15s ease-out;transition:all 0.15s ease-out}#pages-index #information #newest li a:hover{background:#212121;color:#fff;text-shadow:1px 1px 0px #000}#pages-about #content{width:960px;margin:0 auto}#pages-about #about{float:left;width:550px;padding:25px 0}#pages-about #about h1{margin-bottom:30px}#pages-about #about h2{margin-top:25px}#pages-about #about p{margin:10px 0;line-height:1.4em}#pages-about #about #start_button{display:block;margin-top:30px;width:180px;background:#b63700 url(http://timekiwi-assets.s3.amazonaws.com/assets/arrow-3864cb1263d7d4870261024dedbfd44d.png) no-repeat 190px 20px;color:#fff;text-decoration:none;font-size:32px;line-height:32px;padding:16px 0;padding-left:30px;padding-right:30px;-webkit-transition:all 0.15s ease-out;-moz-transition:all 0.15s ease-out;-ms-transition:all 0.15s ease-out;-o-transition:all 0.15s ease-out;transition:all 0.15s ease-out}#pages-about #about #start_button:hover{background-color:#adb600}#plans{width:960px;margin:0 auto}#plans #plan_chooser{width:600px;float:left;margin-top:50px}#plans #plan_chooser h3{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal;font-weight:normal;font-style:normal;font-size:24px}#plans #plan_chooser fieldset{padding:10px 0;margin:10px 0;border:0;border-bottom:1px dotted #ccc}#plans #plan_chooser fieldset h4{margin-bottom:10px}#plans #plan_chooser #email{padding:6px;font-size:24px}#plans #plan_chooser #picker ul li{list-style:none;margin:5px 0}#plans #plan_chooser #picker ul li input{margin-right:5px}#plans #plan_chooser #submit{float:right}#plans aside{float:right;width:280px;padding:50px 25px;background:#f5f5f5;text-shadow:1px 1px 0px #fff;color:#212121}#plans aside p{margin:15px 0}#plans aside h2{margin-bottom:20px}#plans aside dt{font-weight:bold}#plans aside dd{margin-left:15px;margin-bottom:10px}#plans aside .footnote{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal;margin-top:30px;padding-top:30px;border-top:1px dotted #ccc;color:#666}#pages-thanks #content{width:960px;margin:0 auto}#pages-thanks #content h1{margin:25px 0}#pages-thanks #content p a{display:block;margin-top:40px;width:330px;background:#b63700 url(http://timekiwi-assets.s3.amazonaws.com/assets/arrow-3864cb1263d7d4870261024dedbfd44d.png) no-repeat 340px 20px;color:#fff;text-decoration:none;font-size:32px;line-height:32px;padding:16px 0;padding-left:30px;padding-right:30px;-webkit-transition:all 0.15s ease-out;-moz-transition:all 0.15s ease-out;-ms-transition:all 0.15s ease-out;-o-transition:all 0.15s ease-out;transition:all 0.15s ease-out}#pages-thanks #content p a:hover{background-color:#adb600}#timeline.horizontal{position:absolute;top:25px;left:0px;height:100%}#timeline.horizontal li{position:relative;float:left;list-style:none;border-top:10px solid #212121;margin-top:150px}#timeline.horizontal li:first-child{display:none}#timeline.horizontal li .hide_timespot{position:absolute;top:0px;right:10px;font-size:11px;padding:10px 0;display:none}#timeline.horizontal li.hidden .excerpt{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal;color:#999}#timeline.horizontal li.hidden .unhide_timespot{display:none;position:absolute;top:40px;right:0px;padding:10px 40px;font-size:11px;background:url(http://timekiwi-assets.s3.amazonaws.com/assets/white_hiding_100-ee17495d7305f88c4ae441fa77cb8fae.png) repeat-y left top}#timeline.horizontal li.hidden:hover .unhide_timespot{display:block}#timeline.horizontal li.end{width:200px;position:relative}#timeline.horizontal li.end span{-webkit-transform:rotate(90deg);-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);-o-transform:rotate(90deg);transform:rotate(90deg);position:absolute;top:-40px;right:-76px;width:150px;text-align:center;background:#212121;color:#fff;padding:20px;font-size:36px;line-height:36px;height:36px;font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}#timeline.horizontal li.month{background:#212121;color:#adb600;margin-top:-150px;width:200px;padding:0;padding:0;padding-top:68px;padding-bottom:10px;padding-right:10px;margin:0;text-align:right;text-shadow:1px 1px 0px #000}#timeline.horizontal li.month span{display:block;line-height:36px}#timeline.horizontal li.month span.m{font-size:24px;font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}#timeline.horizontal li.month span.y{font-size:36px;font-weight:bold}#timeline.horizontal li.month_after{width:75px}#timeline.horizontal li.month_before{width:125px}#timeline.horizontal li.tumblr h3,#timeline.horizontal li.rss h3{color:#b63700}#timeline.horizontal li.instagram h3{margin-top:10px}#timeline.horizontal li .text{overflow:hidden}#timeline.horizontal li .text a{color:#000;text-decoration:none}#timeline.horizontal li .image{width:200px;margin-top:12px;overflow:hidden}#timeline.horizontal li .image img{max-width:200px;display:block;-webkit-transition:all 0.15s ease-out;-moz-transition:all 0.15s ease-out;-ms-transition:all 0.15s ease-out;-o-transition:all 0.15s ease-out;transition:all 0.15s ease-out}#timeline.horizontal li .date{position:absolute;padding:5px 10px;top:-34px;left:-25px}#timeline.horizontal li .long_date{position:absolute;display:none;top:10px;color:#999}#timeline.horizontal li.timespot{border-left:1px dotted #212121;width:200px;padding:50px 10px;padding-bottom:0;font-size:11px;line-height:1.6em;-webkit-transition:all 0.15s ease-out;-moz-transition:all 0.15s ease-out;-ms-transition:all 0.15s ease-out;-o-transition:all 0.15s ease-out;transition:all 0.15s ease-out}#timeline.horizontal li.timespot.video .video,#timeline.horizontal li.timespot.video .video object,#timeline.horizontal li.timespot.video .video object embed,#timeline.horizontal li.timespot.video .video iframe,#timeline.horizontal li.timespot.video .video video,#timeline.horizontal li.timespot.video .video .youtube5container,#timeline.horizontal li.timespot.video .video .youtube5player{width:200px !important;height:150px !important}#timeline.horizontal li.timespot.video:hover .video,#timeline.horizontal li.timespot.video:hover .video object,#timeline.horizontal li.timespot.video:hover .video object embed,#timeline.horizontal li.timespot.video:hover .video iframe,#timeline.horizontal li.timespot.video:hover .video video,#timeline.horizontal li.timespot.video:hover .video .youtube5container,#timeline.horizontal li.timespot.video:hover .video .youtube5player{width:300px !important;height:225px !important}#timeline.horizontal li.timespot:hover{background:url(http://timekiwi-assets.s3.amazonaws.com/assets/90white-2009b5508c43eeb430632dbfcfd8db50.png);width:300px;border-left-style:solid;z-index:9}#timeline.horizontal li.timespot:hover .hide_timespot{display:block}#timeline.horizontal li.timespot:hover .image,#timeline.horizontal li.timespot:hover img{max-width:300px}#timeline.horizontal li.timespot:hover .long_date{display:block}#timeline.horizontal li.timespot:hover .date{background:#212121;color:#fff}#timeline.horizontal li.timespot:hover .text{font-size:16px;line-height:1.5em;text-shadow:1px 1px 1px #ddd}#timeline.horizontal li.timespot:hover .text h3{font-size:22px;margin-bottom:10px;letter-spacing:-1px}#timeline.horizontal li.timespot:hover .text a{color:#b63700;border-bottom:1px dotted #b63700}#timeline.vertical{display:inline-block;display:block;width:980px;margin:0 auto;background:url(http://timekiwi-assets.s3.amazonaws.com/assets/stem-cf3b4071b9daa52d740a9f9d7eb96c7e.png) center top repeat-y;color:#333;padding:50px 0}#timeline.vertical:after{clear:both;content:" ";display:block;font-size:0;line-height:0;visibility:hidden;width:0;height:0}* html #timeline.vertical{height:1%}#timeline.vertical.empty{padding-top:100px}#timeline.vertical li{list-style:none}#timeline.vertical li#empty{position:relative;margin:0 auto;background:#b63700;color:#fff;width:250px;padding:15px;padding-top:50px;font-size:18px;font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}#timeline.vertical li#empty a{color:#fff;text-decoration:none;border-bottom:1px dotted #999}#timeline.vertical li#empty img{display:block;position:absolute;bottom:-138px;left:95px}#timeline.vertical li.timespot{position:relative;width:400px;float:left;padding:40px;padding-top:60px;margin:0 5px;overflow:hidden;border-top:1px dotted #212121;background:url(http://timekiwi-assets.s3.amazonaws.com/assets/90white-2009b5508c43eeb430632dbfcfd8db50.png)}#timeline.vertical li.timespot.hidden{padding-top:10px;padding-bottom:10px}#timeline.vertical li.timespot.hidden .excerpt{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal;color:#999}#timeline.vertical li.timespot.hidden .unhide_timespot{visibility:hidden;position:absolute;top:0px;right:0px;padding:13px 40px;font-size:12px;background:url(http://timekiwi-assets.s3.amazonaws.com/assets/white_hiding_100-ee17495d7305f88c4ae441fa77cb8fae.png) repeat-y left top}#timeline.vertical li.timespot.hidden:hover .unhide_timespot{visibility:visible}#timeline.vertical li.timespot img{max-width:400px;display:block}#timeline.vertical li.timespot .image{display:table !important;max-height:600px;overflow:hidden}#timeline.vertical li.timespot .image:hover{-moz-box-shadow:0px 0px 15px #888;-webkit-box-shadow:0px 0px 15px #888;box-shadow:0px 0px 15px #888;-ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Strength=10, Direction=0, Color='$color')";filter:progid:DXImageTransform.Microsoft.Shadow(Strength=10, Direction=0, Color='$color')}#timeline.vertical li.timespot .text{line-height:1.4em}#timeline.vertical li.timespot .text h3{margin-bottom:10px;letter-spacing:-1px}#timeline.vertical li.timespot .text p{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}#timeline.vertical li.timespot .text a{color:#333;text-decoration:none}#timeline.vertical li.timespot .external_link{margin:20px 0}#timeline.vertical li.timespot .external_link:hover a{background:#b63700;color:#fff;text-shadow:1px 1px 0px #000}#timeline.vertical li.timespot .external_link a{padding:5px 10px;background:#f5f5f5;display:table;color:#666;text-shadow:1px 1px 0px #fff;text-decoration:none;-webkit-transition:all 0.15s ease-out;-moz-transition:all 0.15s ease-out;-ms-transition:all 0.15s ease-out;-o-transition:all 0.15s ease-out;transition:all 0.15s ease-out}#timeline.vertical li.timespot .date{position:absolute;top:10px;left:40px;color:#ccc;font-size:24px;letter-spacing:-1px;z-index:0;font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}#timeline.vertical li.timespot .long_date{position:absolute;top:10px;left:40px;padding:10px 0;color:#ccc;font-size:12px;letter-spacing:0px;z-index:2;display:none}#timeline.vertical li.timespot .hide_timespot{position:absolute;top:10px;right:40px;font-size:12px;padding:10px 0;visibility:hidden}#timeline.vertical li.timespot:hover{border-top-style:solid}#timeline.vertical li.timespot:hover .text{text-shadow:1px 1px 1px #eee}#timeline.vertical li.timespot:hover .text h3{color:#b63700}#timeline.vertical li.timespot:hover .text p{color:#000}#timeline.vertical li.timespot:hover .text a{color:#b63700;border-bottom:1px dotted #b63700}#timeline.vertical li.timespot:hover .long_date{display:block;background:#fff}#timeline.vertical li.timespot:hover .hide_timespot{visibility:visible}#timeline.vertical li.timespot.video .text{margin-top:10px}#timeline.vertical li.timespot.video .video,#timeline.vertical li.timespot.video .video object,#timeline.vertical li.timespot.video .video object embed,#timeline.vertical li.timespot.video .video iframe,#timeline.vertical li.timespot.video .video video,#timeline.vertical li.timespot.video .video .youtube5container,#timeline.vertical li.timespot.video .video .youtube5player{width:400px !important;height:300px !important}#timeline.vertical li.timespot.twitter .image,#timeline.vertical li.timespot.tumblr .image,#timeline.vertical li.timespot.rss .image,#timeline.vertical li.timespot.foursquare .image,#timeline.vertical li.timespot.facebook .image{margin-top:20px}#timeline.vertical li.timespot.instagram .image{margin-bottom:10px}#timeline.vertical li.month,#timeline.vertical li.month_before,#timeline.vertical li.month_after{clear:both;float:none;margin:0 auto}#timeline.vertical li.end{display:none}#timeline.vertical li.month_before{height:100px}#timeline.vertical li.month_after{height:50px}#timeline.vertical li.month{padding:20px;background:#212121;color:#adb600;width:150px}#timeline.vertical li.month span{display:block}#timeline.vertical li.month .m{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal;font-size:24px}#timeline.vertical li.month .y{font-weight:bold;font-size:36px}#header .inner{display:inline-block;display:block;width:980px;max-height:100px;overflow:hidden;margin:0 auto}#header .inner:after{clear:both;content:" ";display:block;font-size:0;line-height:0;visibility:hidden;width:0;height:0}* html #header .inner{height:1%}#header h1,#header p{text-shadow:1px 1px 0px #000}#header h1{font-size:48px;line-height:48px;color:#eee}#header p{margin-top:10px;color:#999;font-size:16px;line-height:20px;font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}#header img{width:100px}#header .avatar{width:100px;overflow:hidden}#header .user,#header .avatar{float:left}#header .user{width:750px;margin-left:30px}#instructions{background:#212121}#instructions .inner{width:960px;margin:0 auto;color:#fff;padding:25px 0;text-align:center}#instructions .inner h1{text-shadow:1px 1px 0px #000;margin-bottom:20px}#instructions .inner p{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal;margin:5px 0}#instructions .inner p a{color:#adb600;text-shadow:1px 1px 0px #000;font-weight:bold}footer#timeline_footer{position:fixed;bottom:0px;left:0px;background:url(http://timekiwi-assets.s3.amazonaws.com/assets/80green-5b978f3faccf47df1da74908951334af.png);height:50px;width:100%;z-index:99}footer#timeline_footer img{display:block;margin:13px}footer#timeline_footer h2,footer#timeline_footer #reset,footer#timeline_footer #rotate{font-size:24px;font-weight:bold}#reset,#rotate,#sharing h2,#connect h2{display:table;color:#fff;line-height:50px;height:50px;padding:0px 20px;float:left;text-decoration:none}#reset:hover,#rotate:hover,#sharing h2:hover,#connect h2:hover{background:#212121}#sharing{float:left;position:relative}#sharing .console{display:none;position:absolute;bottom:50px;left:0px;background:#212121;padding:20px;width:350px}#sharing .console a{margin-right:5px}#sharing .console .share_service{margin-right:30px;float:left}#sharing .console .share_service:last-child{margin-right:0}#sharing .console .share_service h3{color:#fff;margin-bottom:5px}#sharing .console .share_service h3 span{font-size:14px;display:block;font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}#sharing .console .share_service img{display:inline;margin:0}#sharing:hover .console{display:block}#sharing:hover h2{background:#212121}#navigator{position:absolute;bottom:0px;right:0px}#navigator section.year{float:left;position:relative;width:120px}#navigator section.year:hover{background:#212121}#navigator section.year:hover ul{display:block;position:absolute;bottom:50px;right:0px}#navigator section.year:hover ul li{list-style:none}#navigator section.year:hover ul li a{display:block;background:#212121;color:#fff;text-decoration:none;padding:5px 20px;width:80px;text-align:right;font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}#navigator section.year:hover ul li a:hover{color:#adb600}#navigator section.year:hover ul li:first-child a{padding-top:6.5px}#navigator section.year .year{color:#fff;line-height:50px;height:50px;padding:0px 20px;width:80px;text-align:right}#navigator section.year .year a{color:#fff;text-decoration:none}#navigator section.year ul{display:none}#spinner{width:100%;height:90%;padding-top:10%;z-index:999999;position:absolute;top:0px;left:0px;text-align:center;background:url(http://timekiwi-assets.s3.amazonaws.com/assets/90white-2009b5508c43eeb430632dbfcfd8db50.png)}#spinner #splash{font-size:36px;margin-top:10px;font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}#spinner #info{margin-top:25px;margin-bottom:10px;color:#b63700;font-size:24px}#spinner #solutions span{line-height:32px;font-size:18px;margin-right:12px;color:#666}#spinner #solutions #cancel{height:20px;display:inline;padding:6px 15px;background:#212121;color:#fff;text-decoration:none;font-size:20px;line-height:20px;border-radius:15px;-moz-border-radius:15px;-webkit-border-radius:15px}#spinner #solutions #cancel:hover{background:#b63700}#connect .console{display:none;position:absolute;bottom:50px;left:0px;background:#212121;padding:20px;width:200px}#connect .service{height:37px;width:147px;margin-bottom:10px;display:inline-block;display:block}#connect .service:after{clear:both;content:" ";display:block;font-size:0;line-height:0;visibility:hidden;width:0;height:0}* html #connect .service{height:1%}#connect .service .icon{height:37px;width:37px;margin-right:10px;background:url("servicesiconsdark.png");float:left}#connect .service h3,#connect .service p{float:left;width:100px}#connect .service h3{font-size:13px;height:13px;line-height:14px;color:#fff;padding:5px 0 2.5px 0}#connect .service.connected h3{color:#adb600}#connect .service p,#connect .service a{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal;height:12px;font-size:12px;line-height:12px;color:#999}#connect .service a{text-decoration:none;border-bottom:1px dotted #666}#connect .service a:hover{color:#fff}#connect .twitter .icon{background-position:0px 37px}#connect .twitter.connected .icon{background-position:0px 0px}#connect .tumblr .icon{background-position:111px 37px}#connect .tumblr.connected .icon{background-position:111px 0px}#connect .facebook .icon{background-position:148px 37px}#connect .facebook.connected .icon{background-position:148px 0px}#connect .flickr .icon{background-position:185px 37px}#connect .flickr.connected .icon{background-position:185px 0px}#connect .instagram .icon{background-position:222px 37px}#connect .instagram.connected .icon{background-position:222px 0px}#connect .foursquare .icon{background-position:37px 37px}#connect .foursquare.connected .icon{background-position:37px 0px}#connect .rss .icon{background-position:74px 37px}#connect .rss.connected .icon{background-position:74px 0px}#connect:hover .console{display:block}#connect:hover h2{background:#212121}.connect_instructions,.share_instructions,.navigator_instructions{z-index:-1}.connect_instructions{position:fixed;bottom:70px;left:30px}.share_instructions{position:fixed;bottom:70px;left:30px}.navigator_instructions{position:fixed;bottom:70px;right:30px}#users-new #content{margin:0 auto;width:960px}#users-new #content #create{width:510px;padding:25px 0;float:left}#users-new #content #create h1{font-size:48px;margin-bottom:20px}#users-new #content #create #connect{display:inline-block;display:block;padding:25px 0}#users-new #content #create #connect:after{clear:both;content:" ";display:block;font-size:0;line-height:0;visibility:hidden;width:0;height:0}* html #users-new #content #create #connect{height:1%}#users-new #content #create #connect div{float:left;width:160px;height:30px;margin-right:10px}#users-new #content #create #connect a{display:block;width:160px;height:30px}#users-new #content #create #connect a span{display:none}#users-new #content #create #connect #facebook{background:url(http://timekiwi-assets.s3.amazonaws.com/assets/facebookconnect-586aae3ff3e50f80794462b2c1f48ea2.png) no-repeat}#users-new #content #create #connect #twitter{background:url(http://timekiwi-assets.s3.amazonaws.com/assets/twitterconnect-44cee8ac44eec8ab293591ada5bddb26.png) no-repeat}#users-new #content #create #connect #announce{clear:both;margin-top:10px}#users-new #content #create #connect #announce label{margin-left:2px;width:600px;display:block;font-size:12px;color:#4a4a4a}#users-new #content #create #connect #announce label input{margin-right:4px}#users-new #content #explanation{color:#ccc;line-height:1.4em;font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}#contact{width:960px;margin:0 auto}#contact h1{margin:20px 0}#contact p{width:650px;margin:20px 0;line-height:1.4em}#contact p a{text-decoration:none;border-bottom:1px dotted #b63700}#pages-products #products{width:960px;margin:0 auto}#pages-products #products h1{margin:40px 0}#pages-products #products section{width:600px;margin-top:50px;float:left}#pages-products #products .product{float:left;width:270px;-webkit-transition:all 0.15s ease-out;-moz-transition:all 0.15s ease-out;-ms-transition:all 0.15s ease-out;-o-transition:all 0.15s ease-out;transition:all 0.15s ease-out}#pages-products #products .product h2{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal;font-weight:normal;font-style:normal;line-height:40px;height:40px;font-size:24px;margin-bottom:20px}#pages-products #products .product h2 img{margin-right:10px}#pages-products #products .product .graphic{background:#fff;height:400px;width:269px;border:1px solid #ddd;box-shadow:4px 4px 4px #eee}#pages-products #products .product .action a{display:block;margin:20px 0;width:269px;color:#212121;text-decoration:none;background:#212121;color:#fff;text-shadow:1px 1px 0px #000;text-align:center;font-size:24px;padding:12px 0;font-weight:bold;-webkit-transition:all 0.15s ease-out;-moz-transition:all 0.15s ease-out;-ms-transition:all 0.15s ease-out;-o-transition:all 0.15s ease-out;transition:all 0.15s ease-out}#pages-products #products .product .examples{margin-top:45px}#pages-products #products .product .examples h4{color:#aaa}#pages-products #products .product .examples ul{padding-top:15px}#pages-products #products .product .examples ul li{list-style:inside square;padding:3px 15px;color:#aaa}#pages-products #products .product .examples ul li a{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal;text-decoration:none;color:#aaa;border-bottom:1px dotted #bbb}#pages-products #products .product:hover .action a{color:#212121 !important;text-shadow:1px 1px 0px #fff}#pages-products #products .product:hover .examples h4,#pages-products #products .product:hover .examples a{color:#333 !important}#pages-products #products #personal{margin-right:60px}#pages-products #products #personal:hover .action a{background:#adb600}#pages-products #products #personal:hover .graphic{border:1px solid #adb600;box-shadow:4px 4px 4px #adb600}#pages-products #products #company:hover .action a{background:#fbed20}#pages-products #products #company:hover .graphic{border:1px solid #fbed20;box-shadow:4px 4px 4px #fbed20}#pages-products #difference{float:right;width:280px;padding:71px 25px;padding-bottom:55px;background:#f5f5f5;color:#212121;text-shadow:1px 1px 0px #fff}#pages-products #difference p{margin:15px 0}#pages-products #difference h2{margin-bottom:20px}#pages-products #difference dt{font-weight:bold}#pages-products #difference dd{margin-left:15px;margin-bottom:10px}#pages-products #difference .footnote{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal;margin-top:30px;padding-top:30px;border-top:1px dotted #ccc;color:#666}#pages-faq #content{width:960px;margin:0 auto}#pages-faq #content h1{margin:25px 0}#pages-faq #content aside{float:right;width:280px;padding:50px 25px;background:#f5f5f5;text-shadow:1px 1px 0px #fff;color:#212121}#pages-faq #content dl{float:left;width:550px}#pages-faq #content dl dt,#pages-faq #content dl dd{line-height:1.4em}#pages-faq #content dl dt{font-weight:bold}#pages-faq #content dl dd{margin-bottom:25px;font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}#pages-faq #content ul{list-style:square;margin-top:20px}#pages-faq #content ul li{line-height:1.4em;margin:2.5px 0;margin-left:20px}body.timespots #content{width:960px;margin:0 auto}body.timespots #content h1{margin:25px 0}#timespots-show .field{margin:10px 0}#timespots-show .field strong{display:block;font-size:24px}#timespots-show .field img{display:block;height:300px}#timespots-edit h2,#timespots-new h2{margin-top:-20px;color:#4a4a4a;margin-bottom:20px}#timespots-edit form,#timespots-new form{float:left}#timespots-edit aside,#timespots-new aside{text-shadow:1px 1px 0px #fff;background:#f5f5f5;min-height:670px;float:right;width:200px;padding:25px}#timespots-edit aside img,#timespots-new aside img{width:200px}#timespots-edit aside strong,#timespots-new aside strong{display:block;margin-bottom:5px}#pages-explore #content,#pages-explore_photos #content{margin:0 auto;width:960px}#pages-explore #content h1,#pages-explore_photos #content h1{margin:50px 0}#pages-explore #content h1 a,#pages-explore #content h1 span,#pages-explore_photos #content h1 a,#pages-explore_photos #content h1 span{font-size:18px;text-shadow:none}#pages-explore #content h1 span,#pages-explore_photos #content h1 span{color:#4a4a4a}#pages-explore_photos #photos_wrapper{overflow:hidden;background:#212121;width:900px;height:500px;border:30px solid #212121;display:inline-block;display:block}#pages-explore_photos #photos_wrapper:after{clear:both;content:" ";display:block;font-size:0;line-height:0;visibility:hidden;width:0;height:0}* html #pages-explore_photos #photos_wrapper{height:1%}#pages-explore_photos #photos li{list-style:none;width:100px;height:100px;overflow:hidden;float:left}#pages-explore_photos #photos li a{text-decoration:none}#pages-explore_photos #photos li a span{display:none;color:#fff;text-shadow:1px 1px 0px #000;font-size:12px}#pages-explore_photos #photos li a:hover img{opacity:0.4;-webkit-transition:all 0.15s ease-out;-moz-transition:all 0.15s ease-out;-ms-transition:all 0.15s ease-out;-o-transition:all 0.15s ease-out;transition:all 0.15s ease-out}#pages-explore_photos #photos li a:hover span{display:block;position:absolute;text-align:center;top:0px;left:0px;line-height:100px;width:100%;height:100%}#pages-explore_photos #photos li img{width:200px;display:block}#pages-explore_photos #photos li:nth-child(8n){width:200px;height:200px}#pages-explore_photos #photos li:nth-child(8n) a span{line-height:200px;font-size:20px}#pages-explore_photos #photos li:nth-child(8n) img{width:350px}#pages-explore_photos #photos li:nth-child(16n){width:300px;height:300px}#pages-explore_photos #photos li:nth-child(16n) a span{line-height:300px;font-size:28px}#pages-explore_photos #photos li:nth-child(16n) img{width:500px}#pages-explore #users{display:inline-block;display:block}#pages-explore #users:after{clear:both;content:" ";display:block;font-size:0;line-height:0;visibility:hidden;width:0;height:0}* html #pages-explore #users{height:1%}#pages-explore #users li{float:left;list-style:none}#pages-explore #users li.lorem a{background:#d5ea49}#pages-explore #users li.ipsum a{background:#ed946c}#pages-explore #users li.dolor a{background:#65c6ea}#pages-explore #users li.sit a{background:#ffb57e}#pages-explore #users li.amet a{background:#ffea4d}#pages-explore #users li.consectetur a{background:#a996e7}#pages-explore #users li.adipisicing a{background:#eda9d2}#pages-explore #users li.elit a{background:#a996e7}#pages-explore #users li.sed a{background:#94f8ad}#pages-explore #users li a{display:block;background:#fff;color:#000;text-decoration:none;text-shadow:1px 1px 0px #eee;padding:5px 10px;margin:0 5px 5px 0;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;-webkit-transition:all 0.15s ease-out;-moz-transition:all 0.15s ease-out;-ms-transition:all 0.15s ease-out;-o-transition:all 0.15s ease-out;transition:all 0.15s ease-out}#pages-explore #users li a:hover{background:#212121;color:#fff;text-shadow:1px 1px 0px #000}#pages-explore #users li a{font-size:24px;margin:0 10px 10px 0}body.log_items #content{width:960px;margin:0 auto}body.log_items #content h1{margin:25px 0}#pages-status #content{width:960px;margin:0 auto;padding:50px 0}#pages-status #content section{display:inline-block;display:block;margin:25px 0}#pages-status #content section:after{clear:both;content:" ";display:block;font-size:0;line-height:0;visibility:hidden;width:0;height:0}* html #pages-status #content section{height:1%}#pages-status .stat{float:left;text-align:center;margin:0px 10px 10px 0;padding:14px 30px;border:3px solid #eee;background:#f4f4f4;border-radius:20px;-moz-border-radius:20px;-webkit-border-radius:20px}#pages-status .stat h2,#pages-status .stat h3{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal}#pages-status .stat strong{font-size:32px;text-shadow:1px 1px 0px #fff}#pages-status .stat.main{padding:25px 50px}#pages-status .stat.main strong{font-size:96px}#pages-status #users .stat{background:#d2d5f9;border-color:#a996e7}#pages-status #timespots .stat{background:#e5f472;border-color:#b1c11a}#pages-status #services .stat{background:#f6cfbc;border-color:#ed946c}#pages-status.lorem a{background:#d5ea49}#pages-status.ipsum a{background:#ed946c}#pages-status.dolor a{background:#65c6ea}#pages-status.sit a{background:#ffb57e}#pages-status.amet a{background:#ffea4d}#pages-status.adipisicing a{background:#eda9d2}#pages-status.elit a{background:#a996e7}#pages-status.sed a{background:#94f8ad}*{margin:0;padding:0}body{color:#000;background:#fff;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}body .for_signed_in{display:none !important}body.signed_in .for_signed_out{display:none !important}body.signed_in .for_signed_in{display:block !important}body .for_owner{display:none !important}body.owner .for_not_owner{display:none !important}body.owner .for_owner{display:block !important}#services-failure #content{width:960px;margin:25px auto}#services-failure #content p{margin:10px 0}#user_state{position:fixed;top:0px;right:0px;height:20px;padding:5px;background:url("10black.png");opacity:0.6;-webkit-transition:all 0.15s ease-out;-moz-transition:all 0.15s ease-out;-ms-transition:all 0.15s ease-out;-o-transition:all 0.15s ease-out;transition:all 0.15s ease-out}#user_state #omnikiwi{float:right}#user_state #omnikiwi img{display:block;margin:0 5px}#user_state nav{display:none;float:left}#user_state nav a{padding:4px 10px;color:#fff;text-decoration:none;font-size:11px;-webkit-transition:all 0.15s ease-out;-moz-transition:all 0.15s ease-out;-ms-transition:all 0.15s ease-out;-o-transition:all 0.15s ease-out;transition:all 0.15s ease-out}#user_state nav a:hover{background:#b63700}#user_state:hover{opacity:1;background:#212121}#user_state:hover nav{display:block}header{background:#212121;padding:25px 0}header h1{width:960px;margin:0 auto}header h1 a{display:block;background:url(http://timekiwi-assets.s3.amazonaws.com/assets/head50-27c7c7e48ee7d78ed57264073e73053b.png) no-repeat;height:50px}header h1 a span{display:none}footer#default{clear:both;margin:0 auto;padding:50px 0;width:950px;font-size:12px;line-height:1.4em;color:#ccc;display:inline-block;display:block}footer#default:after{clear:both;content:" ";display:block;font-size:0;line-height:0;visibility:hidden;width:0;height:0}* html footer#default{height:1%}footer#default .info{padding-left:95px;background:url(http://timekiwi-assets.s3.amazonaws.com/assets/kiwi-bw-10-31aa7dacf5d3bcc13af95767fa42dc22.png) no-repeat center left;height:80px;width:400px;float:left}footer#default .copyright{margin-bottom:12px;padding-top:10px}footer#default a{color:#ccc;text-decoration:none}footer#default:hover a{border-bottom:1px dotted #999;color:#666}footer#default #menu{float:right}footer#default #menu li{float:left;list-style:none;padding:10px}footer#default #menu li a{display:block}footer#default #menu li a:hover{color:#212121}#pages-p500,#pages-p404,#pages-maintenance{background:#212121}#pages-p500 #kiwi,#pages-p404 #kiwi,#pages-maintenance #kiwi{margin:100px auto;width:400px;text-align:center;color:#fff;text-shadow:1px 1px 0px #000 !important}#pages-p500 #kiwi h1,#pages-p404 #kiwi h1,#pages-maintenance #kiwi h1{text-shadow:1px 1px 0px #000 !important;letter-spacing:-1px;margin:20px 0}#pages-p500 #kiwi p,#pages-p404 #kiwi p,#pages-maintenance #kiwi p{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal;margin:2px 0}#pages-p500 #kiwi #sorry,#pages-p404 #kiwi #sorry,#pages-maintenance #kiwi #sorry{margin-top:20px;color:#adb600;font-weight:bold}#whatsnew{float:right;width:280px;padding:25px;background:#f5f5f5;text-shadow:1px 1px 0px #fff}#whatsnew h2{margin-bottom:20px}#whatsnew section{margin-bottom:50px}#whatsnew section p{margin:10px 0;line-height:1.4em}#whatsnew section p em{font-weight:normal;font-style:normal;background:#eae773}#whatsnew #services{display:inline-block;display:block}#whatsnew #services:after{clear:both;content:" ";display:block;font-size:0;line-height:0;visibility:hidden;width:0;height:0}* html #whatsnew #services{height:1%}#whatsnew #services .icons{padding:20px 0}#whatsnew #services .icons li{list-style:none;position:relative;height:74px;float:left;margin:0 15px 15px 0}#whatsnew #services .icons a{width:74px;height:74px;display:block;background:url(http://timekiwi-assets.s3.amazonaws.com/assets/serviceicons-b11946a9fa93d2547b44365951f02123.png)}#whatsnew #services .icons a span{display:none}#whatsnew #services .icons a.twitter{background-position:0px 0px}#whatsnew #services .icons a.instagram{background-position:-74px 0px}#whatsnew #services .icons a.flickr{background-position:-148px 0px}#whatsnew #services .icons a.facebook{background-position:-222px 0px}#whatsnew #services .icons a.tumblr{background-position:-296px 0px}#whatsnew #services .icons a.rss{background-position:-370px 0px}aside{line-height:1.4em}aside p{margin:10px 0}aside .footnote{font-family:"Helvetica Neue Light","HelveticaNeue-Light",Arial,Helvetica,sans-serif;font-weight:normal;font-size:14px;color:#4a4a4a}
