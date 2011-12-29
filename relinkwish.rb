@@ -33,13 +33,11 @@ class Relinkwish
             sender = $1
             time = Date.parse($2)
             link = $3
-            text = coder.encode(coder.decode($4), :decimal)
+            text = coder.encode(coder.decode($4).gsub(/<(.*?)>/, ''), :decimal)
             if senders.include? sender
               unless text.match(/.*tetalab(devel)*\/.*/)
                 data = {:time => time, :link => link, :text => text}
                 @link_arr << data
-              else
-                p text
               end
             end
           end
@@ -79,6 +77,26 @@ class Relinkwish
 
       final_link = "<li class='timespot'><div class='text'><p>"
       final_link += "<a href=\"#{link[:link]}\">#{link[:link]}</a> #{link[:text]}"
+
+      href_ext = link[:link][-4, 4];
+      #
+      # image
+      if href_ext==".jpg" || href_ext==".png" || href_ext==".gif" || href_ext==".svg"
+        final_link += '<br><img src="' + link[:link].gsub(/\"/, '&quot;') + '"><br>'
+      end
+
+      # YouTube
+      #if youtube = link[:link].scan(/[http|https]\:\/\/www\.youtube\.com\/watch\?v=(.{11})/)[0]
+      #  youtube_id = youtube[0]
+      #  final_link += '<br><div style="height:385px"><iframe width=640 height=385 src="https://www.youtube.com/embed/' + youtube_id + '"></iframe></div>'
+      #end
+
+      # Vimeo
+      if vimeo = link[:link].scan(/[http|https]\:\/\/vimeo\.com\/.*(\d{8})$/)[0]
+        vimeo_id = vimeo[0]
+        final_link += '<br><div style="height:238px"><iframe width=400 height=238 src="https://player.vimeo.com/video/' + vimeo_id + '?title=0&byline=0&portrait=0"></iframe></div>'
+      end
+
       final_link += "</p></div><div class='long_date'>Posted on #{link[:time].strftime("%B %d, %Y at %H:%M")}</div>"
       final_link += "<div class='date'>#{link[:time].strftime("%B %d")}</div></li>"
       index.puts(final_link+"\n")
@@ -101,7 +119,6 @@ class Relinkwish
 
         timeline_footer += "<li><a href=\"##{link[:time].strftime("%Y-%m")}\">#{link[:time].strftime("%B")}</a></li>"
         current_month = link[:time].month
-        p count
         count = 0
       else
         count += 1
@@ -118,7 +135,7 @@ class Relinkwish
 
 
     index.close
-    puts "File links.html is built"
+    puts "File is built"
   end
 
   def how_many?
