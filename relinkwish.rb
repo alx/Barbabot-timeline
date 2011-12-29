@@ -26,7 +26,7 @@ class Message
         @content_type = "vimeo"
       end
 
-      if youtube = @link.scan(/[http|https]\:\/\/www\.youtube\.com\/watch\?v=(.{11})/)[0]
+      if youtube = @link.scan(/[http|https]\:\/\/www\.youtube\.com\/watch\?.*v=(.{11}).*/)[0]
         @content_id = youtube[0]
         @content_type = "youtube"
       end
@@ -55,14 +55,14 @@ class Message
 
     if @content_type
       output += case @content_type
-      when "image" then '<br><img src="' + @link.gsub(/\"/, '&quot;') + '"><br>'
-      when "vimeo" then '<br><div style="height:238px"><iframe width=400 height=238 src="https://player.vimeo.com/video/' + @content_id + '?title=0&byline=0&portrait=0"></iframe></div>'
-      #when "youtube" then #output = '<br><div style="height:385px"><iframe width=640 height=385 src="https://www.youtube.com/embed/' + @content_id + '"></iframe></div>'
+      when "image"    then '<br><img src="' + @link.gsub(/\"/, '&quot;') + '"><br>'
+      when "vimeo"    then '<br><div style="height:238px"><iframe width=400 height=238 src="https://player.vimeo.com/video/' + @content_id + '?title=0&byline=0&portrait=0"></iframe></div>'
+      when "youtube"  then '<br><div style="height:238px"><iframe width=400 height=238 src="https://www.youtube.com/embed/' + @content_id + '"></iframe></div>'
       else ""
       end
     end
 
-    output += "</p></div><div class='long_date'>Posted on #{@time.strftime("%B %d, %Y at %H:%M")}</div>"
+    output += "</p></div><div class='long_date'>Posted on #{@time.strftime("%B %d, %Y")}</div>"
     output += "<div class='date'>#{@time.strftime("%B %d")}</div></li>"
 
     return output
@@ -119,9 +119,11 @@ class Relinkwish
     current_month = 12
     first = true
     show_content = true
+    array_index = 0
     @messages.each do |message|
+      show_content = false if array_index > 50
+      array_index += 1
       if message.time.month != current_month || first
-        show_content = false unless first
         index.puts(message.format_header(show_content)+"\n")
         current_month = message.time.month
         first = false
@@ -140,13 +142,13 @@ class Relinkwish
       if message.time.month != current_month
         if current_month == 12
           unless first
-            timeline_footer += "</ul></section>"
+            #timeline_footer += "</ul></section>"
           end
-          timeline_footer += "<section class='year'><h2 class='year'><a href=\"#year-#{message.time.year}\" class=\"#{message.time.year}\">#{message.time.year}</a></h2><ul>"
+          #timeline_footer += "<section class='year'><h2 class='year'><a href=\"#year-#{message.time.year}\" class=\"#{message.time.year}\">#{message.time.year}</a></h2><ul>"
           first = false
         end
 
-        timeline_footer += "<li><a href=\"##{message.time.strftime("%Y-%m")}\">#{message.time.strftime("%B")}</a></li>"
+        #timeline_footer += "<li><a href=\"##{message.time.strftime("%Y-%m")}\">#{message.time.strftime("%B")}</a></li>"
         current_month = message.time.month
         count = 0
       else
