@@ -189,16 +189,12 @@ class Relinkwish
     strip
     
     # For each week, create a file with a list of messages from this week
-    begin_day_selection = time_at_midnight(8)
-    end_day_selection = time_at_midnight
-    p "begin_day_selection: #{begin_day_selection}"
-    p "end: #{Time.at(end_day_selection).to_s}"
+    begin_day_selection = Time.now
+
     while !@messages.empty?
 
-      message_list =  @messages.select do |a|
-        a.time > DateTime.parse(Time.at(begin_day_selection).to_s) && 
-        a.time < DateTime.parse(Time.at(end_day_selection).to_s)
-      end
+      message_index = @messages.index{|message| message.time < DateTime.parse(Time.at(begin_day_selection).to_s)}
+      message_list =  @messages.slice! 0, (message_index || @messages.size)
 
       unless message_list.empty?
         filename = message_list.first.time.strftime("links/%Y_%m_%d.html")
@@ -206,12 +202,10 @@ class Relinkwish
         unless File.exists?(filename)
           page = CalendarPage.new(filename, message_list)
           page.to_html
-          @messages.drop(message_list.size)
         end
       end
 
-      end_day_selection = begin_day_selection
-      begin_day_selection -= 60*60*24*8
+      begin_day_selection -= 60*60*24*7
     end
 
     puts "File is built"
