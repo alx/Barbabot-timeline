@@ -2,6 +2,7 @@ require 'rubygems'
 require 'rexml/document'
 require 'date'
 require 'htmlentities'
+require 'time'
 
 class Message
 
@@ -33,21 +34,7 @@ class Message
     end
   end
 
-  def format_header(show_content = true)
-    output = "<li class='month_before year_#{@time.year} "
-    output += "hidden" unless show_content
-    output += "'></li><a name='#{@time.strftime("%Y-%m")}'></a>"
-    output += "<li class='month "
-    output += "hidden" unless show_content
-    output += "' id='#{@time.strftime("%Y-%m")}'><span class='m'>#{@time.strftime("%B")}</span>"
-    output += "<span class='y'>#{@time.year}</span></li>"
-    output += "<li class='month_after"
-    output += "hidden" unless show_content
-    output += "'></li>"
-    return output
-  end
-
-  def format_content(show_content = true)
+  def to_html(show_content = true)
     output = "<li class='timespot "
     output += "hidden" unless show_content
     output +="'><div class='text'><p>"
@@ -67,6 +54,99 @@ class Message
 
     return output
   end
+
+end
+
+class CalendarPage
+
+  def initialize(filename, messages)
+    @filename = filename
+    @messages = messages
+  end
+
+  def to_html
+    append_file("header.html")
+    build_link_list
+    build_calendar_menu_list
+    append_file("footer.html")
+  end
+
+  def html_header(time, show_content = true)
+    output = "<li class='month_before year_#{time.year} "
+    output += "hidden" unless show_content
+    output += "'></li><a name='#{time.strftime("%Y-%m")}'></a>"
+    output += "<li class='month "
+    output += "hidden" unless show_content
+    output += "' id='#{time.strftime("%Y-%m")}'><span class='m'>#{time.strftime("%B")}</span>"
+    output += "<span class='y'>#{time.year}</span></li>"
+    output += "<li class='month_after"
+    output += "hidden" unless show_content
+    output += "'></li>"
+    return output
+  end
+
+  def append_file(origin_file)
+    dest_file = File.open(@filename, "a")
+    File.open(origin_file, "r") do |content|
+      while(line = content.gets)
+        dest_file.puts(line)
+      end
+    end
+    dest_file.close
+  end
+
+  def build_link_list
+    dest_file = File.open(@filename, "a")
+    dest_file.puts("<ul class='vertical ' id='timeline'>")
+
+    timeline_years = []
+    current_month = 12
+    first = true
+    show_content = true
+    array_index = 0
+
+    @messages.each do |message|
+      show_content = false if array_index > 50
+      array_index += 1
+      if message.time.month != current_month || first
+        dest_file.puts(html_header(message.time, show_content)+"\n")
+        current_month = message.time.month
+        first = false
+      end
+      dest_file.puts(message.to_html(show_content)+"\n")
+    end
+    dest_file.puts("</ul>")
+    dest_file.close
+  end
+
+  def build_calendar_menu_list
+    dest_file = File.open(@filename, "a")
+    current_month = 12
+    count = 0
+    first = true
+    timeline_footer = "<footer id='timeline_footer'><nav id='navigator'>"
+    @messages.reverse.each do |message|
+      if message.time.month != current_month
+        if current_month == 12
+          unless first
+            #timeline_footer += "</ul></section>"
+          end
+          #timeline_footer += "<section class='year'><h2 class='year'><a href=\"#year-#{message.time.year}\" class=\"#{message.time.year}\">#{message.time.year}</a></h2><ul>"
+          first = false
+        end
+
+        #timeline_footer += "<li><a href=\"##{message.time.strftime("%Y-%m")}\">#{message.time.strftime("%B")}</a></li>"
+        current_month = message.time.month
+        count = 0
+      else
+        count += 1
+      end
+    end
+    timeline_footer += "</ul></section></nav></footer>"
+    dest_file.puts(timeline_footer)
+    dest_file.close
+  end
+
 end
 
 class Relinkwish
@@ -105,71 +185,47 @@ class Relinkwish
     puts "Complete! #{@messages.size} links"
   end
 
-  def append_file(dest_file, origin_file)
-    File.open(origin_file, "r") do |content|
-      while(line = content.gets)
-        dest_file.puts(line)
-      end
-    end
-  end
-
-  def build_link_list(index)
-    index.puts("<ul class='vertical ' id='timeline'>")
-    timeline_years = []
-    current_month = 12
-    first = true
-    show_content = true
-    array_index = 0
-    @messages.each do |message|
-      show_content = false if array_index > 50
-      array_index += 1
-      if message.time.month != current_month || first
-        index.puts(message.format_header(show_content)+"\n")
-        current_month = message.time.month
-        first = false
-      end
-      index.puts(message.format_content(show_content)+"\n")
-    end
-    index.puts("</ul>")
-  end
-
-  def build_calendar_menu_list(index)
-    current_month = 12
-    count = 0
-    first = true
-    timeline_footer = "<footer id='timeline_footer'><nav id='navigator'>"
-    @messages.reverse.each do |message|
-      if message.time.month != current_month
-        if current_month == 12
-          unless first
-            #timeline_footer += "</ul></section>"
-          end
-          #timeline_footer += "<section class='year'><h2 class='year'><a href=\"#year-#{message.time.year}\" class=\"#{message.time.year}\">#{message.time.year}</a></h2><ul>"
-          first = false
-        end
-
-        #timeline_footer += "<li><a href=\"##{message.time.strftime("%Y-%m")}\">#{message.time.strftime("%B")}</a></li>"
-        current_month = message.time.month
-        count = 0
-      else
-        count += 1
-      end
-    end
-    timeline_footer += "</ul></section></nav></footer>"
-    index.puts(timeline_footer)
-  end
-
   def build_link_file
     strip
-    index = File.open("index.html", "w+")
+    
+    # For each week, create a file with a list of messages from this week
+    begin_day_selection = time_at_midnight(8)
+    end_day_selection = time_at_midnight
+    p "begin_day_selection: #{begin_day_selection}"
+    p "end: #{Time.at(end_day_selection).to_s}"
+    while !@messages.empty?
 
-    append_file(index, "header.html")
-    build_link_list(index)
-    build_calendar_menu_list(index)
-    append_file(index, "footer.html")
+      message_list =  @messages.select do |a|
+        a.time > DateTime.parse(Time.at(begin_day_selection).to_s) && 
+        a.time < DateTime.parse(Time.at(end_day_selection).to_s)
+      end
 
-    index.close
+      unless message_list.empty?
+        filename = message_list.first.time.strftime("links/%Y_%m_%d.html")
+
+        unless File.exists?(filename)
+          page = CalendarPage.new(filename, message_list)
+          page.to_html
+          @messages.drop(message_list.size)
+        end
+      end
+
+      end_day_selection = begin_day_selection
+      begin_day_selection -= 60*60*24*8
+    end
+
     puts "File is built"
+  end
+
+  def time_at_midnight(back_in_days = 0)
+    #convert today's time to a string
+    today = (Time.now - 60*60*24*back_in_days).to_s # => "Mon Dec 12 10:52:45 -0800 2011"
+
+    #replace the hours:minutes:seconds and time-zone to the time and time zone that you need
+    today[11, 14] = "00:00:00 +0000" # => "Mon Dec 12 00:00:00 +0000 2011"
+
+    #if you need to, convert the time into a UTC
+    return Time.parse(today).strftime("%s").to_i # => 1323648000
   end
 end
 
