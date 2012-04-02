@@ -10,29 +10,30 @@ class Message
 
   attr_reader :sender, :link, :time, :content, :content_type, :content_id
 
-  def initialize(line)
+  def initialize
+  end
+
+  def parse_adium_log(line)
     coder = HTMLEntities.new
     if line.match(/sender="(.[^"]*)" time="(.[^"]*)" .*<div><a href="(http:.[^"]*)">.*<\/a> (.*)<\/div>/)
       @sender = $1
       @time = Date.parse($2)
       @link = $3
       text = coder.encode(coder.decode($4).gsub(/<(.*?)>/, ''), :decimal)
-      @content = text unless text.match(/.*tetalab(devel)*\/.*/)
+      @content = text unless text.match(/.*tetalab(devel)*\/.*/) || text.match(/:8003/)
+      extract_content
+    end
+  end
 
-      href_ext = @link[-4, 4]
-      @content_type = "image" if href_ext==".jpg" || href_ext==".png" || href_ext==".gif" || href_ext==".svg"
-      @content_type = "audio" if href_ext==".mp3" || href_ext==".wav" || href_ext==".oga"
-      @content_type = "video" if href_ext==".mp4" || href_ext==".ogv" || href_ext==".ogg" || @link[-5, 5]==".webm" || href_ext==".mov"
-
-      if vimeo = @link.scan(/[http|https]\:\/\/vimeo\.com\/.*(\d{8})$/)[0]
-        @content_id = vimeo[0]
-        @content_type = "vimeo"
-      end
-
-      if youtube = @link.scan(/[http|https]\:\/\/www\.youtube\.com\/watch\?.*v=(.{11}).*/)[0]
-        @content_id = youtube[0]
-        @content_type = "youtube"
-      end
+  def parse_weechat_log(line)
+    coder = HTMLEntities.new
+    if line.match(/(.*)\t(.*)\t(http:.[^\s]*)(.*)/)
+      @sender = $2
+      @time = Date.parse($1)
+      @link = $3
+      text = coder.encode(coder.decode($4.strip), :decimal)
+      @content = text unless text.match(/.*tetalab(devel)*\/.*/) || text.match(/:8003/)
+      extract_content
     end
   end
 
@@ -55,6 +56,25 @@ class Message
     output += "<div class='date'>#{@time.strftime("%B %d")}</div></li>"
 
     return output
+  end
+
+  private
+
+  def extract_content
+    href_ext = @link[-4, 4]
+    @content_type = "image" if href_ext==".jpg" || href_ext==".png" || href_ext==".gif" || href_ext==".svg"
+    @content_type = "audio" if href_ext==".mp3" || href_ext==".wav" || href_ext==".oga"
+    @content_type = "video" if href_ext==".mp4" || href_ext==".ogv" || href_ext==".ogg" || @link[-5, 5]==".webm" || href_ext==".mov"
+
+    if vimeo = @link.scan(/[http|https]\:\/\/vimeo\.com\/.*(\d{8})$/)[0]
+      @content_id = vimeo[0]
+      @content_type = "vimeo"
+    end
+
+    if youtube = @link.scan(/[http|https]\:\/\/www\.youtube\.com\/watch\?.*v=(.{11}).*/)[0]
+      @content_id = youtube[0]
+      @content_type = "youtube"
+    end
   end
 
 end
@@ -168,6 +188,7 @@ class Relinkwish
     filetypes = File.join("/Users/alx/Library/Application\ Support/Adium\ 2.0/Users/Default/Logs/GTalk.alx.girard\@gmail.com/barbabot\@appspot.com", "**", "*.xml")
     @file_arr = Dir.glob(filetypes)
     pull_all_urls(@file_arr)
+    pull_weechat_urls
   end
 
   def pull_all_urls(read_these)
@@ -176,7 +197,8 @@ class Relinkwish
     read_these.each do |f|
       File.open(f, "r") do |infile|
         while (line = infile.gets)
-          message = Message.new line
+          message = Message.new
+          message.parse_adium_log line
           if senders.include? message.sender
             @messages << message
           end
@@ -185,6 +207,21 @@ class Relinkwish
     end
     @messages.sort!{|a, b| b.time <=> a.time}
     puts "Complete! #{@messages.size} links"
+  end
+
+  def pull_weechat_urls
+    senders = ["alx"]
+    f = "/Users/alx/irc.bitlbee.barbabot.weechatlog"
+    File.open(f, "r") do |infile|
+      while (line = infile.gets)
+        message = Message.new
+        message.parse_weechat_log line
+        if senders.include? message.sender
+          @messages << message
+        end
+      end
+    end
+    @messages.sort!{|a, b| b.time <=> a.time}
   end
 
   def build_link_file
